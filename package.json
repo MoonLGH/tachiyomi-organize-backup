@@ -1,0 +1,25 @@
+{
+  "name": "tachiyomi-organize-backup",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoonLGH/tachiyomi-organize-backup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MoonLGH/tachiyomi-organize-backup/issues"
+  },
+  "homepage": "https://github.com/MoonLGH/tachiyomi-organize-backup#readme",
+  "dependencies": {
+    "node-fetch": "^3.2.6",
+    "protobufjs": "^6.11.3",
+    "zlib": "^1.0.5"
+  }
+}
