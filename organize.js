@@ -1,6 +1,6 @@
 import fs from "fs"
-const json = JSON.parse(fs.readFileSync("./tachi.json"))
-// const json = require("./tachi.json")
+const json = JSON.parse(fs.readFileSync("processing/tachi.json"))
+// const json = require("processing/tachi.json")
 
 let genresObj = []
 
@@ -14,7 +14,7 @@ for (let i = 0; i < json.backupManga.length; i++) {
     }
 }
 
-let uniq = [...new Set(genresObj),"UNKNOWN"];
+let uniq = ["ALL",...[...new Set(genresObj)].sort((a,b)=>a-b),"UNKNOWN"];
 let categoryBackup = []
 for (let i = 0; i < uniq.length; i++) {
     if(i === 0) {
@@ -32,9 +32,12 @@ for (let i = 0; i < json.backupManga.length; i++) {
 
     json.backupManga[i].categories =[]
 
+    json.backupManga[i].categories.push(findCategory("ALL"))
+
     if(json.backupManga[i].nogenre){
         json.backupManga[i].categories.push(findCategory("UNKNOWN"))
     }
+
     for (let x = 0; x < json.backupManga[i].genre.length; x++) {
         json.backupManga[i].categories.push(findCategory(json.backupManga[i].genre[x]))
     }
@@ -48,4 +51,4 @@ function findCategory(name) {
     return find.order.toString()
 }
 
-fs.writeFileSync("tachii.json",JSON.stringify(json,null,3))
+fs.writeFileSync("processing/tachiOutput.json",JSON.stringify(json,null,3))
